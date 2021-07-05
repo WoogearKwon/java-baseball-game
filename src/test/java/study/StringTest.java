@@ -1,9 +1,9 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
@@ -26,20 +26,30 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("Exception Capturing Test")
     void charAt() {
         String actual = "abc";
         assertThatThrownBy(() -> {
-           // ..
+            actual.charAt(4); // throws IndexOutOfBoundsException
+            /*
+            * 조건1: asserThatThrownBy 안에서 예외가 발생
+            * 조건2: 예외 타입은 IndexOutOfBoundsExceptons
+            * 조건3: 예외 메시지는 다음을 포함 - hasMessageContaining()
+            * */
         }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("Index: 2, Size 2");
+                .hasMessageContaining("String index out of range: 4");
+
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> {
+                    actual.charAt(4);
+                }).withMessageMatching("String index out of range: 4");
+
+        /*
+        자주 발생하는 Exception의 경우 예외별 메서드 제공
+        * assertThatIllegalArgumentException()
+        * assertThatIllegalStateException()
+        * assertThatIOException()
+        * assertThatNullPointerException()
+        * */
     }
-
-    /*
-    자주 발생하는 Exception의 경우 예외별 메서드 제공
-
-    * assertThatIllegalArgumentException()
-    * assertThatIllegalStateException()
-    * assertThatIOException()
-    * assertThatNullPointerException()
-    * */
 }
