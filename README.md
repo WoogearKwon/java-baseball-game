@@ -24,3 +24,12 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+### Git 커밋 메시지 구분
+- `feat`: feature
+- `fix`: bug fix
+- `docs`: documentation
+- `style`: formatting, missing semi colons, …
+- `refactor`: refactoring
+- `test`: when adding missing tests
+- `chore`: maintain
