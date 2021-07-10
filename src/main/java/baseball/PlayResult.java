@@ -1,8 +1,8 @@
 package baseball;
 
 public class PlayResult {
-    private int strikes;
-    private int balls;
+    private int strikes = 0;
+    private int balls = 0;
 
     public int getStrike() {
         return strikes;
@@ -21,5 +21,9 @@ public class PlayResult {
         if (status.isBall()) {
             balls++;
         }
+    }
+
+    public boolean isGameEnd() {
+        return strikes == 3;
     }
 }

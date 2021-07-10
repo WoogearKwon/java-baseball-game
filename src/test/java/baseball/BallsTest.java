@@ -32,7 +32,7 @@ public class BallsTest {
     @Test
     void play_3strike() {
         PlayResult playResult = answerBalls.play(Arrays.asList(1, 2, 3));
-        assertThat(playResult.getStrike()).isEqualTo(3);
+        assertThat(playResult.isGameEnd()).isTrue();
     }
 
     @Test
