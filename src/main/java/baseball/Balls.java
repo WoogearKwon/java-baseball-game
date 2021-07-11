@@ -26,8 +26,23 @@ public class Balls {
             BallStatus status = userBalls.play(ball);
             result.report(status);
         }
+        printResult(result);
 
         return result;
+    }
+
+    private void printResult(PlayResult result) {
+        if (result.isGameEnd()) {
+            ResultView.threeStrike();
+            return;
+        }
+
+        if (result.getStrike() == 0 && result.getBall() == 0) {
+            ResultView.nothing();
+            return;
+        }
+
+        ResultView.strikesAndBalls(result);
     }
 
     public BallStatus play(Ball ball) {
