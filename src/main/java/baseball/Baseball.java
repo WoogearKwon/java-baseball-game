@@ -25,6 +25,32 @@ public class Baseball {
     }
 
     private void runGame() {
-        
+
+    }
+
+    public boolean isInputValid(String input) {
+        if (input.isEmpty()) {
+            return false;
+        }
+
+        if (input.length() > 3) {
+            return false;
+        }
+
+        return isInputNumeric(input);
+    }
+
+    private boolean isInputNumeric(String input) {
+        if (input == null) {
+            return false;
+        }
+
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+
+        return true;
     }
 }
